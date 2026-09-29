@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Jaborie Smith — Computer Science student at York College of Pennsylvania, Data Science minor, class of 2028." />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Jaborie Smith — Computer Science</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f4f2ed;
+      --surface: #fbfaf7;
+      --surface-strong: #ffffff;
+      --ink: #171815;
+      --muted: #5d615a;
+      --line: #d5d5ce;
+      --accent: #d94b27;
+      --accent-dark: #9e2f14;
+      --accent-soft: #f4d8ce;
+      --grid: rgba(28, 31, 26, .055);
+      --shadow: 0 20px 65px rgba(29, 29, 24, .08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111310;
+        --surface: #181a17;
+        --surface-strong: #20231f;
+        --ink: #f1f1eb;
+        --muted: #b4b8ae;
+        --line: #353932;
+        --accent: #ff7653;
+        --accent-dark: #ff9a81;
+        --accent-soft: #4b2920;
+        --grid: rgba(241, 241, 235, .05);
+        --shadow: 0 24px 70px rgba(0, 0, 0, .3);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 0;
+      background:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+        var(--bg);
+      background-size: 32px 32px;
+      color: var(--ink);
+      font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+    .page {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav { display: flex; gap: 30px; align-items: center; }
+    nav a {
+      position: relative;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -8px;
+      height: 2px;
+      background: var(--accent);
+      transition: right 180ms ease;
+    }
+    nav a:hover { color: var(--ink); }
+    nav a:hover::after { right: 0; }
+
+    .hero {
+      min-height: 610px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(290px, .55fr);
+      gap: clamp(40px, 8vw, 110px);
+      align-items: center;
+      padding: 74px 0 88px;
+    }
+
+    .signal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .signal::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(56px, 9.4vw, 126px);
+      line-height: .86;
+      letter-spacing: -.065em;
+      font-weight: 600;
+    }
+    h1 span { display: block; color: var(--accent); }
+
+    .intro {
+      max-width: 720px;
+      margin: 38px 0 0;
+      font-size: clamp(19px, 2.15vw, 27px);
+      line-height: 1.5;
+      letter-spacing: -.025em;
+      color: var(--muted);
+    }
+    .intro strong { color: var(--ink); font-weight: 600; }
+
+    .profile-mark {
+      position: relative;
+      aspect-ratio: 1 / 1.12;
+      display: grid;
+      place-items: center;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .profile-mark::before,
+    .profile-mark::after {
+      content: "";
+      position: absolute;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+    }
+    .profile-mark::before { width: 72%; height: 65%; }
+    .profile-mark::after { width: 42%; height: 38%; }
+    .axis-x, .axis-y { position: absolute; background: var(--line); }
+    .axis-x { left: 10%; right: 10%; height: 1px; }
+    .axis-y { top: 10%; bottom: 10%; width: 1px; }
+    .initials {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 96px;
+      height: 96px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -.05em;
+      transform: rotate(-4deg);
+    }
+    .coord {
+      position: absolute;
+      z-index: 2;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .05em;
+    }
+    .coord.a { left: 18px; top: 16px; }
+    .coord.b { right: 18px; bottom: 16px; }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .fact {
+      min-height: 164px;
+      padding: 34px clamp(22px, 4vw, 46px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .fact + .fact { border-left: 1px solid var(--line); }
+    .fact dt {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .fact dd {
+      margin: 0;
+      font-size: clamp(18px, 2vw, 25px);
+      line-height: 1.25;
+      letter-spacing: -.03em;
+      font-weight: 600;
+    }
+
+    section { scroll-margin-top: 30px; }
+    .section-grid {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: clamp(40px, 8vw, 110px);
+      padding: 120px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-label {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 5px 0 0;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .section-label b { color: var(--accent-dark); font-weight: 500; }
+    h2 {
+      margin: 0;
+      font-size: clamp(36px, 5.5vw, 68px);
+      line-height: 1.04;
+      letter-spacing: -.05em;
+      font-weight: 600;
+    }
+    .about-copy p {
+      max-width: 720px;
+      margin: 28px 0 0;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .education-record {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 30px;
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .education-record h3 {
+      margin: 0 0 12px;
+      font-size: clamp(23px, 3vw, 34px);
+      letter-spacing: -.04em;
+      line-height: 1.2;
+    }
+    .education-record p { margin: 6px 0 0; color: var(--muted); line-height: 1.5; }
+    .year {
+      align-self: start;
+      padding: 8px 11px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .project-stage {
+      position: relative;
+      min-height: 320px;
+      display: grid;
+      align-content: center;
+      padding: clamp(32px, 7vw, 74px);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .project-stage::after {
+      content: "01";
+      position: absolute;
+      right: -12px;
+      bottom: -46px;
+      color: var(--accent-soft);
+      font: 500 clamp(130px, 20vw, 260px)/1 "IBM Plex Mono", monospace;
+      pointer-events: none;
+    }
+    .project-stage h3 {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: -.04em;
+      line-height: 1.1;
+    }
+    .project-stage p {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    footer {
+      min-height: 170px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer strong { color: var(--ink); font-weight: 600; }
+
+    @media (max-width: 780px) {
+      .page { width: min(100% - 32px, 680px); }
+      .topbar { min-height: 70px; }
+      nav { width: 100%; justify-content: space-between; gap: 14px; }
+      nav a { font-size: 12px; }
+      .hero { min-height: 0; grid-template-columns: 1fr; gap: 52px; padding: 70px 0; }
+      h1 { font-size: clamp(58px, 19vw, 90px); }
+      .profile-mark { width: min(100%, 360px); aspect-ratio: 1.2 / 1; justify-self: end; }
+      .facts { grid-template-columns: 1fr; }
+      .fact { min-height: 125px; padding: 26px 6px; }
+      .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
+      .section-grid { grid-template-columns: 1fr; gap: 38px; padding: 82px 0; }
+      .education-record { grid-template-columns: 1fr; gap: 20px; }
+      .year { justify-self: start; }
+      .project-stage { min-height: 350px; }
+      footer { align-items: flex-start; flex-direction: column; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      .topbar { display: none; }
+      .page { width: 100%; padding: 0 30px; }
+      .hero { min-height: 0; padding: 50px 0; }
+      .section-grid { break-inside: avoid; padding: 65px 0; }
+      .profile-mark, .project-stage { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <nav aria-label="Portfolio sections">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#work">Projects</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="signal mono">Computer Science · Class of 2028</div>
+          <h1 id="hero-title">Jaborie <span>Smith.</span></h1>
+          <p class="intro"><strong>Computer Science student</strong> at York College of Pennsylvania, minoring in Data Science.</p>
+        </div>
+        <div class="profile-mark" aria-hidden="true">
+          <span class="axis-x"></span>
+          <span class="axis-y"></span>
+          <span class="coord a mono">x: build</span>
+          <span class="coord b mono">y: learn</span>
+          <span class="initials">JS</span>
+        </div>
+      </section>
+
+      <dl class="facts" aria-label="Profile summary">
+        <div class="fact"><dt class="mono">School</dt><dd>York College of Pennsylvania</dd></div>
+        <div class="fact"><dt class="mono">Study</dt><dd>Computer Science</dd></div>
+        <div class="fact"><dt class="mono">Minor</dt><dd>Data Science</dd></div>
+      </dl>
+
+      <section class="section-grid" id="about" aria-labelledby="about-title">
+        <p class="section-label mono"><b>01</b> About</p>
+        <div class="about-copy">
+          <h2 id="about-title">Learning how software and data turn ideas into working systems.</h2>
+          <p>I’m a Computer Science student at York College of Pennsylvania with a minor in Data Science. This portfolio will document my engineering work from the problem and technical decisions through the final implementation.</p>
+        </div>
+      </section>
+
+      <section class="section-grid" id="education" aria-labelledby="education-title">
+        <p class="section-label mono"><b>02</b> Education</p>
+        <div>
+          <h2 id="education-title">Academic foundation.</h2>
+          <article class="education-record">
+            <div>
+              <h3>York College of Pennsylvania</h3>
+              <p>Bachelor’s studies in Computer Science</p>
+              <p>Minor in Data Science</p>
+            </div>
+            <div class="year mono">Expected 2028</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-grid" id="work" aria-labelledby="work-title">
+        <p class="section-label mono"><b>03</b> Projects</p>
+        <div>
+          <h2 id="work-title">Selected engineering work.</h2>
+          <div class="project-stage">
+            <h3>Projects are being prepared for publication.</h3>
+            <p>Future case studies will show the challenge, the approach, the tools used, and the result—so the work is clear at a glance and meaningful in depth.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span><strong>Jaborie Smith</strong> · Computer Science</span>
+      <span class="mono">York College of Pennsylvania · 2028</span>
+    </footer>
+  </div>
+</body>
+</html>
